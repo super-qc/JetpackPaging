@@ -2,5 +2,5 @@
 
 API接口代码存放位置: /server-api/
 
-<img src="https://github.com/super-qc/JetpackPaging/raw/master/Screenshots/Screenshot_20220510_164222.png" width="50%" alt="下拉刷新"/>
-<img src="https://github.com/super-qc/JetpackPaging/raw/master/Screenshots/Screenshot_20220510_164243.png" width="50%" alt="上拉加载更多"/>
+<img src="https://github.com/super-qc/JetpackPaging/raw/master/Screenshots/Screenshot_20220510_164222.png" width="30%" alt="下拉刷新"/>
+<img src="https://github.com/super-qc/JetpackPaging/raw/master/Screenshots/Screenshot_20220510_164243.png" width="30%" alt="上拉加载更多"/>
