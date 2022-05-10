@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface MovieApi {
 
-    @GET("pkds.php")
+    @GET("flow_paging.php")
     suspend fun getMovies(
         @Query("page") page: Int,
         @Query("pagesize")pageSize:Int

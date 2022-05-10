@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import com.study.jetpackpaging.adapter.MovieAdapter
+import com.study.jetpackpaging.adapter.MovieLoadMoreAdapter
 import com.study.jetpackpaging.databinding.ActivityMainBinding
 import com.study.jetpackpaging.viewmodel.MovieViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -22,12 +24,21 @@ class MainActivity : AppCompatActivity() {
         val movieAdapter = MovieAdapter(this)
 
         mBinding.apply {
-            rv.adapter = movieAdapter
-
+            // 添加上拉加载更多样式
+            rv.adapter = movieAdapter.withLoadStateFooter(MovieLoadMoreAdapter(this@MainActivity))
+            swipeRefreshLayout.setOnRefreshListener {
+                movieAdapter.refresh()
+            }
         }
         lifecycleScope.launchWhenCreated {
             movieViewModel.loadMovie().collectLatest {
                 movieAdapter.submitData(it)
+            }
+        }
+
+        lifecycleScope.launchWhenCreated {
+            movieAdapter.loadStateFlow.collectLatest { state ->
+                mBinding.swipeRefreshLayout.isRefreshing = state.refresh is LoadState.Loading
             }
         }
 

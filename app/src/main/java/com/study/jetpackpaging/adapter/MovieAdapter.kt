@@ -25,7 +25,7 @@ class MovieAdapter(private val context: Context) :
         movie?.let {
             val binding=holder.binding as MovieItemBinding
             binding.movie=it
-            binding.networkImage=it.rate
+            binding.networkImage=it.cover
         }
 
     }
